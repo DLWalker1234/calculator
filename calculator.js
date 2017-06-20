@@ -1,16 +1,16 @@
 var val1 = document.getElementById("val1");
 var val2 = document.getElementById("val2");
-var answer = document.getElementById("answer");
-
-
-
+var outputDOM = document.getElementById("answer");
+var multiply = document.getElementById("multiply");
+var subtract = document.getElementById("subtract");
+var add = document.getElementById("add");
+var divide = document.getElementById("divide");
 /*
   Create a function that multiplies two numbers
   passed in as arguments. Return the product.
  */
 
-function multiply (a,b) {
-  var multiply = document.getElementById("multiply");
+function multiplication (a,b) {
   let product = a * b;
   return product
 };
@@ -19,9 +19,8 @@ function multiply (a,b) {
   Create a function that adds two numbers
   passed in as arguments. Return the sum.
  */
-function substraction (a,b) {
-  var subtract = document.getElementById("subtract");
-  let diiference = a-b;
+function subtraction (a,b) {
+  let difference = a-b;
   return difference
 };
 
@@ -29,8 +28,7 @@ function substraction (a,b) {
   Create a function that subtracts two numbers
   passed in as arguments. Return the difference.
  */
-function addittion (a,b) {
-  var add = document.getElementById("add");
+function addition (a,b) {
   let sum = a + b;
   return sum
 };
@@ -41,7 +39,6 @@ function addittion (a,b) {
   passed in as arguments. Return the quotient.
  */
 function division (a,b) {
-  var subtract = document.getElementById("subtract");
   let quotient = a / b;
   return quotient
 };
@@ -55,29 +52,29 @@ function division (a,b) {
 
   Return the value of the operation.
  */
-function math(val1,val2,operation) {
+
   
   
-  add.addEventListener("click", function() {
-    addittion(val1, val2)
-    answer.innerHTML = sum
-    })
+add.addEventListener("click", function() {
+  math(parseInt(val1.value), parseInt(val2.value), addition)
 
-  subtract.addEventListener("click", function() {
-    subtraction(val1, val2)
-    answer.innerHTML = difference
-    })
+})
 
-  divide.addEventListener("click", function() {
-    division(val1, val2)
-    answer.innerHTML = quotient
-    })
+subtract.addEventListener("click", function() {
+  math(parseInt(val1.value), parseInt(val2.value), subtraction)
+})
+
+divide.addEventListener("click", function() {
+  math(parseInt(val1.value), parseInt(val2.value), division)
+})
 
   multiply.addEventListener("click", function() {
-    multiply(val1, Val2)
-    answer.innerHTML = product
-  })
+    math(parseInt(val1.value), parseInt(val2.value), multiplication)
+})
 
+
+
+function math(a, b, operation) {
+  let answer = operation(a, b);
+  outputDOM.innerHTML = answer;
 }
-
-math(val1, val2, multiply)
